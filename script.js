@@ -8,8 +8,9 @@ var listId = new Map()
 var myUsername
 
 var peer = new Peer('' ,{
+  key : "peerjs",
   secure : true,
-  host: "https://peerjsserver10.herokuapp.com/",
+  host: "peerjsserver10.herokuapp.com",
   port: 443
 });
 
@@ -77,16 +78,18 @@ peer.on('connection', function(conn) {
         connect(conn.peer)
     }
     conn.on('data', function(data){
-        if (data.type.includes('file')) {
-        const bytes = new Uint8Array(data.file)
-        const blob = new Blob([data.file], {
-            type: data.filetype
-        })
-        downloadBlob(blob, data.filename, data.filetype)
-        console.log(url)
-        console.log(file)
-        console.log(typeof(file))
-        }
+        if (data.type) {
+          if (data.type.includes('file')) {
+          const bytes = new Uint8Array(data.file)
+          const blob = new Blob([data.file], {
+              type: data.filetype
+          })
+          downloadBlob(blob, data.filename, data.filetype)
+          console.log(url)
+          console.log(file)
+          console.log(typeof(file))
+          }
+         }
         // Will print 'hi!'
         console.log(data)
         addMessage(username, username + ': ' + data)
