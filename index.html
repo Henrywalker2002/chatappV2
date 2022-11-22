@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>chat app</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.3/socket.io.js" integrity="sha512-iWPnCISAd/J+ZacwV2mbNLCaPGRrRo5OS81lKTVPtRg1wGTC20Cfmp5Us5RcbLv42QLdbAWl0MI57yox5VecQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <body>
+
+        <div id = "form-log">
+            <input type="text" name="username" id="username">
+            <br>
+            <input type="password" name="username" id="password">
+            <button type="submit" id = "btnlog" style = "margin-top: 20px;">login</button>
+        </div>
+
+        <div id ="chat">
+            <ul id="listUser">
+                
+            </ul>
+            <div class = "grid-box" id = "chatbox">
+                <div class = "grid-item" id = "left-box">
+                    <div id = "header">
+                        <p style="margin-top: 5px;">List friends</p>
+                    </div>
+                </div>
+                <div class="grid-item" id = "right-box">
+                    <div id = "mess-his"></div>
+                    <div id = "input-box">
+                        <input type="text" name="input-mess" id="input-mess">
+                        <button type="submit" id = "btn-send">send</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id = "div-file">
+                <p>Choose your file</p>
+                <input type="text" name="fileUsername" id="fileUsername">
+                <input type="file" name="file" id="file">
+                <button type="submit" id ="send-file">Send file</button>
+            </div>
+            <!-- <div id = "logged" >
+                <h3 id = "my-peer"></h3>
+                <input type="text" id = "callUsername", placeholder="username">
+                 <button id = "btnCall">Call</button>
+            </div> -->
+        </div>
+
+        
+<!--         <div id = "sign-up">
+            <input type="text" id="txtUsername" placeholder="Enter username">
+            <button type="submit" id = "btnSignUp">Sign up</button>
+        </div> -->
+        
+    </body>
+<script src="script.js"></script>
+</html>

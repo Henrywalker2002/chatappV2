@@ -1,0 +1,41 @@
+.grid-box {
+    display: grid;
+    grid-template-columns: 20% 75%;
+    height: 500px;
+    column-gap: 5%;
+}
+
+#right-box {
+    position: relative;
+}
+
+#left-box   {
+    text-align: center;
+    border: 1px solid #000;
+}
+
+
+#input-box {
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
+}
+
+#input-mess {
+    width: 87%;
+    height: 5%;
+}
+
+#header {
+    margin-top: 5px;
+}
+
+#mess-his {
+    height: 95%;
+    border: 1px solid #000;
+}
+
+#btn-send{
+    width: 10%;
+    float: right;
+}
