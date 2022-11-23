@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000', {transports : ['websocket'], upgrade: false});
+var socket = io();
 
 var listCon = new Map()
 var otherUsername = ""
