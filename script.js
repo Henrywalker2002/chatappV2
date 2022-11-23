@@ -6,7 +6,8 @@ var connectionOptions = {
   transports: ["websocket"],
 };
 const ENDPOINT = "https://serverchat00.herokuapp.com/"; 
-socket = io(ENDPOINT, connectionOptions);
+// const ENDPOINT = "http://localhost:5000"
+var socket = io(ENDPOINT, connectionOptions);
 
 var listCon = new Map()
 var otherUsername = ""
@@ -92,7 +93,11 @@ peer.on('connection', function(conn) {
           const blob = new Blob([data.file], {
               type: data.filetype
           })
-          downloadBlob(blob, data.filename, data.filetype)
+          let text = username + ' has send you a file. Receive?'
+          if (confirm(text) == true) {
+            downloadBlob(blob, data.filename, data.filetype)
+          }
+          
           console.log(url)
           console.log(file)
           console.log(typeof(file))
@@ -131,8 +136,11 @@ socket.on('list', arrUser => {
     })
 })
 
-socket.on('dropUser', peerId => {
-    $(`#${peerId}`).remove()
+socket.on('dropUser', user => {
+    $(`#${user.peerId}`).remove()
+    $(`#${user.username}`).remove()
+    let temp = 'box-' + user.username
+    $(`#${temp}`).remove()
 })
 
 //end socket
@@ -161,7 +169,7 @@ $('#btnCall').click(function handleCall(){
 
 $('#btn-send').click(function handleSend(){
     let message = $('#input-mess').val()
-    addMessage(otherUsername, myUsername + ': ' +  message)
+    addMessage(otherUsername,  'Me: ' +  message)
     sendMessage(otherId, message)
 })
 
@@ -195,7 +203,7 @@ function addChatUser(username) {
     var boxMess = document.createElement('div')
     boxMess.classList.add('mess-box')
     boxMess.id = "box-" + username
-    var text = document.createTextNode("Messenger")
+    var text = document.createTextNode(username)
     boxMess.appendChild(text)
     var box = document.getElementById('mess-his')
     box.append(boxMess)

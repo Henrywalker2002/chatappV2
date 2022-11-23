@@ -71,9 +71,10 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         let index = arrUser.findIndex(user => user.peerId === socket.peerId);
         console.log(index)
+        let user = arrUser[index]
         arrUser.splice(index, 1)
         console.log(arrUser)
-        io.emit('dropUser', socket.peerId);
+        io.emit('dropUser', user);
     })
 })
 
