@@ -24,25 +24,42 @@ console.log('RESTful API server started on: ' + port); */
 
 //end rest api
 
-let port = process.env.PORT || 5300;
+// let port = process.env.PORT || 5300;
 
 const arrUser = []
 
-var app = require('express')();
-var http = require('http')
-const server = http.createServer(app)
+// var io = require('socket.io')(3000)
+
+/* var app = require('express')();
+var https = require('http')
+const server = https.createServer(app)
 const {Server} = require('socket.io')
 var io = new Server(server)
 
 server.listen(port, function(){
     console.log('listening on *' + port);
-});
+}); */
+
+const http = require('http');
+const express = require('express');
+const socketio = require('socket.io');
+const cors = require('cors');
+
+const router = require('./api/routes');
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
+app.use(cors());
+app.use(router);
 
 // socket
 io.on('connection', socket => {
     socket.on('signUp', user => {
         const isExist = arrUser.some(e => e.username == user.username)
-        socket.peerId = user.peerId
+        socket.peerId = user.peerId;
+        console.log(user.username + socket.id)
         if (isExist) {
             return socket.emit('existence')
         }
@@ -52,8 +69,12 @@ io.on('connection', socket => {
     })
 
     socket.on('disconnect', () => {
-        const index = arrUser.findIndex(user => user.peerId === socket.peerId)
-        arrUser.slice(index, 1)
+        let index = arrUser.findIndex(user => user.peerId === socket.peerId);
+        console.log(index)
+        arrUser.splice(index, 1)
+        console.log(arrUser)
         io.emit('dropUser', socket.peerId);
     })
 })
+
+server.listen(process.env.PORT || 5000, () => console.log(`Server has started.`));
