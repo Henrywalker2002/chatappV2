@@ -40,7 +40,7 @@
     float: right;
 }
 
-#btnlog {   
+#btnlog , #btnSignUp{   
     width: 100%;
     background-color: #4CAF50;   
     color: orange;   
@@ -50,11 +50,11 @@
     cursor: pointer;   
 }     
 
-#btnlog:hover {
+#btnlog:hover , #btnSignUp:hover{
     opacity: 0.7;
 }
 
-#username, #password {   
+#username, #password, #email, #name {   
     width: 100%;   
     margin: 8px 0;  
     padding: 12px 20px;   

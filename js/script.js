@@ -89,7 +89,6 @@ peer.on('connection', function(conn) {
     conn.on('data', function(data){
         if (data.type) {
           if (data.type.includes('file')) {
-          const bytes = new Uint8Array(data.file)
           const blob = new Blob([data.file], {
               type: data.filetype
           })
@@ -97,10 +96,6 @@ peer.on('connection', function(conn) {
           if (confirm(text) == true) {
             downloadBlob(blob, data.filename, data.filetype)
           }
-          
-          console.log(url)
-          console.log(file)
-          console.log(typeof(file))
           }
          }
         // Will print 'hi!'

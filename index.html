@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>chat app</title>
+        <title>Chat app</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
@@ -9,6 +9,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.3/socket.io.js" integrity="sha512-iWPnCISAd/J+ZacwV2mbNLCaPGRrRo5OS81lKTVPtRg1wGTC20Cfmp5Us5RcbLv42QLdbAWl0MI57yox5VecQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
     <body>
 
         <div id = "form-log">
@@ -19,7 +21,10 @@
                 <br>
                 <label for="">Password</label>
                 <input type="password" name="username" id="password">
-                <button type="submit" id = "btnlog" style = "margin-top: 20px;">login</button>
+                <button type="submit" id = "btnlog" style = "margin-top: 20px;">LOGIN</button>
+                <div style="float: right; margin-right:15px;">
+                    <p>Not a member? <a href="signUp.html">Sign up now</a></p>
+                </div>
             </div>
         </div>
 
@@ -63,6 +68,6 @@
         <!--===============================================================================================-->	
 
     </body>
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 
 </html>
